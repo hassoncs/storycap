@@ -12,6 +12,7 @@
     "build": "tsc --p tsconfig.build.json && tsc -p tsconfig.client.json",
     "prepare": "yarn clean && yarn build",
     "test": "jest",
+    "build:watch": "npx nodemon --watch src --ext js,ts --exec 'yarn build'",
     "typedoc": "typedoc --out \"../../dist-pages/typedoc/storycap\" --ignoreCompilerErrors --tsconfig tsconfig.build.json src"
   },
   "repository": {

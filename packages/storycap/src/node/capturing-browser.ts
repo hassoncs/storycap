@@ -88,8 +88,16 @@ export class CapturingBrowser extends StoryPreviewBrowser {
     await super.boot();
     await this.expose();
     await this.addStyles();
+    await this.setupLogging();
+
     this.resourceWatcher = new ResourceWatcher(this.page).init();
     return this;
+  }
+
+  private async setupLogging() {
+    this.page.on('console', msg => {
+      console.log(`${msg.text()}`);
+    });
   }
 
   private async addStyles() {
